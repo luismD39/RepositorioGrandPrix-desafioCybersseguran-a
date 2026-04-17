@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-s-cale=1.0">
+    <title>Petrobras - Acesso Seguro via Óculos RA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 SecureTech AR</h1>
+            <p class="subtitle">Demonstração de Autenticação Segura e Proteção de Dados (DLP)</p>
+        </header>
+
+        <!-- Painel de Login -->
+        <div class="card">
+            <h2>1. Autenticação (Simulação Óculos RA)</h2>
+            <div class="input-group">
+                <label>Usuário:</label>
+                <input type="text" id="username" value="admin" placeholder="Digite o usuário">
+            </div>
+            <div class="input-group">
+                <label>Senha:</label>
+                <input type="password" id="password" value="admin123" placeholder="Digite a senha">
+            </div>
+            <button id="btnLogin" class="btn primary">🔑 Fazer Login e Obter Token</button>
+            <div id="loginResult" class="result-box hidden">
+                <strong>Token de Acesso (JWT):</strong>
+                <textarea id="tokenDisplay" readonly rows="2"></textarea>
+                <p><strong>Role:</strong> <span id="roleDisplay"></span></p>
+                <p class="instruction">⚠️ Copie o token acima para usar na próxima etapa.</p>
+            </div>
+        </div>
+
+        <!-- Painel de Ativação do Token -->
+        <div class="card">
+            <h2>2. Ativar Token de Acesso</h2>
+            <p>Cole o token JWT obtido no login para liberar as consultas.</p>
+            <div class="input-group">
+                <label>Token JWT:</label>
+                <textarea id="tokenInput" placeholder="Cole aqui o token recebido..." rows="2"></textarea>
+            </div>
+            <button id="btnActivateToken" class="btn secondary">✅ Ativar Token</button>
+            <div id="tokenStatus" class="status-message hidden"></div>
+        </div>
+
+        <!-- Painel de Consultas -->
+        <div class="card">
+            <h2>3. Acessar Dados Corporativos</h2>
+            <p>Com o token ativado, consulte as rotas protegidas.</p>
+            <div class="button-group">
+                <button id="btnPublicData" class="btn secondary" disabled>📊 Consultar Dados Operacionais</button>
+                <button id="btnSensitiveData" class="btn warning" disabled>👁️ Consultar Dados Sensíveis (CPF)</button>
+            </div>
+            <div id="dataResult" class="result-box hidden">
+                <pre id="dataDisplay"></pre>
+            </div>
+        </div>
+
+        <!-- Legenda / Explicação -->
+        <footer>
+            <p><strong>💡 Demonstração para o Desafio:</strong> O token JWT contém a role do usuário. Dados sensíveis (CPF) são criptografados em trânsito e só descriptografados para perfis autorizados (admin).</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
